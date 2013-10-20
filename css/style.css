@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -8,7 +9,8 @@ html {
 
 body {
   margin: 0;
-  color: #444; }
+  color: #444;
+  font-family: 'Open Sans'; }
 
 .page-wrapper {
   display: flex;
@@ -43,7 +45,7 @@ p {
       width: 230px; }
       .main-menu li {
         display: block;
-        border-bottom: 2px solid #444; }
+        border-bottom: 2px solid #aaa; }
       .main-menu a {
         margin-right: 0; } }
 
