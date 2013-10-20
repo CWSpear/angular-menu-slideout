@@ -56,7 +56,7 @@ angular.module('MenuSlideout', ['ngTouch'])
                     if(dir == 'right') $elem.addClass(openClass);
                     else $elem.removeClass(openClass);
 
-                    $rootScope.$broadcast('slideMenuChange', dir == 'right');
+                    $rootScope.$broadcast('slideMenuToggled', dir == 'right');
                 },
                 move: function (coords, event) {
                     // set a tolerance before we kick in sliding
@@ -87,7 +87,7 @@ angular.module('MenuSlideout', ['ngTouch'])
                 }
             });
 
-            $rootScope.$on('slideMenuChange', function(event, isOpen) {
+            $rootScope.$on('toggleSlideMenu', function(event, isOpen) {
                 $elem.toggleClass(openClass, isOpen);
             });
         }
