@@ -1,0 +1,30 @@
+{
+  "name": "angular-menu-slideout",
+  "version": "0.9.0",
+  "authors": [
+    "Cameron Spear <cameronspear@gmail.com>"
+  ],
+  "description": "A high performance Angular directive for sliding out an offscreen menu on swipe.",
+  "main": "js/menuSlideout.js",
+  "keywords": [
+    "angular",
+    "menu",
+    "slideout",
+    "swipe",
+    "ngAnimate",
+    "menu",
+    "slideout"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/CWSpear/angular-menu-slideout",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-touch": "~1.2"
+  }
+}

@@ -1,0 +1,11 @@
+@import "compass";
+
+[menu-slideout] {
+    @include transform(translate3d(0,0,0));
+    &.menu-slideout-transition { 
+        @include transition(transform 0.5s); 
+    }
+    &.menu-slideout-open { 
+        @include transform(translate3d(230px, 0, 0)); 
+    }
+}
