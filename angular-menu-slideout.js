@@ -16,10 +16,14 @@ angular.module('MenuSlideout', ['ngTouch'])
                 // direction, we ignore the direction
                 slideTolerance = 100,
 
+                // NYI until Angular allows config of the tolerances
+                moveYBufferRadius = 30,
+
                 // we toggle transitionClass cuz we don't want to 
                 // transition while we're actually dragging
                 transitionClass = 'menu-slideout-transition',
                 openClass = 'menu-slideout-open',
+                isSlidingClass = 'menu-slideout-is-sliding',
 
                 // TODO: make the menu open all but X pixels of window
                 // var menuWidth = $document[0].width - 74;
@@ -45,7 +49,7 @@ angular.module('MenuSlideout', ['ngTouch'])
                 end: function (coords, event) {
                     endCoords = coords;
 
-                    $elem.removeAttr('style').addClass(transitionClass);
+                    $elem.removeAttr('style').addClass(transitionClass).removeClass(isSlidingClass);
                     if(!toleranceMet) return;
 
                     // if we slide more than slideTolerance pixels
@@ -63,7 +67,7 @@ angular.module('MenuSlideout', ['ngTouch'])
                     // (Angular does this to an extent, also, I believe)
                     if(!toleranceMet && Math.abs(startCoords.x - coords.x) < tolerance) return;
                     dir = lastCoords.x < coords.x ? 'right' : 'left';
-                    $elem.removeClass(transitionClass);
+                    $elem.removeClass(transitionClass).addClass(isSlidingClass);
 
                     // restrict x to be between 0 and menuWidth
                     var x = coords.x - startCoords.x + ($elem.hasClass(openClass) ? menuWidth : 0);
@@ -80,11 +84,11 @@ angular.module('MenuSlideout', ['ngTouch'])
                     toleranceMet = true;
                 },
                 cancel: function (coords, event) {
-                    $elem.addClass(transitionClass);
+                    $elem.addClass(transitionClass).removeClass(isSlidingClass);
                     $elem.removeAttr('style');
-
-                    angular.element(document.querySelector('.slider')).append('Cancel ');
                 }
+            }, {
+                moveYBufferRadius: moveYBufferRadius
             });
 
             $rootScope.$on('toggleSlideMenu', function(event, isOpen) {

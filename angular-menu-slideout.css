@@ -15,3 +15,7 @@
     -ms-transform: translate3d(230px, 0, 0);
     -o-transform: translate3d(230px, 0, 0);
     transform: translate3d(230px, 0, 0); }
+  [menu-slideout].menu-slideout-is-sliding {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none; }
