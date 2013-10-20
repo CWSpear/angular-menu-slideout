@@ -1,0 +1,114 @@
+@import "compass";
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }    
+}
+
+*, *:before, *:after {
+    @include box-sizing(border-box);
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    color: #444;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+p {
+    margin-top: 0;
+}
+
+.main-menu {
+    padding: 10px;
+    background: #efefef;
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        color: #444;
+        padding: 10px;
+        text-decoration: none;
+        background: #ccc;
+        display: block;
+        margin-right: 5px;
+    }
+
+    @include mobile {
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding: 0;
+
+        height: 100%;
+        width: 230px;
+
+        li {
+            display: block;
+            border-bottom: 2px solid #444;
+        }
+
+        a {
+            margin-right: 0;
+        }
+    }
+}
+
+.mobile-only {
+    display: none;
+
+    @include mobile {
+        display: block;
+    }
+}
+
+.menu-toggle-bar {
+    padding: 10px;
+    background: #efefef;
+
+    font-size: 0;
+    margin: -20px -20px 20px;
+}
+
+.menu-toggle {
+    color: #444;
+    padding: 5px 5px;
+    text-decoration: none;
+    background: #ccc;
+    display: block;
+
+    display: inline-block;
+    cursor: pointer;
+
+    .line {
+        display: block;
+        background: #aaa;
+        height: 3px;
+        width: 20px;
+        margin: 6px;
+    }
+}
+
+.content {
+    background: white;
+    padding: 20px;
+
+    flex: 1;
+}
