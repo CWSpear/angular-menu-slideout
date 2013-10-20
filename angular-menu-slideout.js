@@ -24,7 +24,7 @@ angular.module('MenuSlideout', ['ngTouch'])
                 // TODO: make the menu open all but X pixels of window
                 // var menuWidth = $document[0].width - 74;
                 // angular.element(document).find('head').append('<style type="text/css">@charset "UTF-8";.slider.open{-webkit-transform: translate3d(' + menuWidth + 'px, 0, 0);</style>');
-                menuWidth = 300,
+                menuWidth = 230,
 
                 // adapted from http://davidwalsh.name/vendor-prefix
                 prefix = (function () {
