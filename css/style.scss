@@ -1,7 +1,9 @@
 @import "compass";
 
 @mixin mobile {
-    @media (max-width: 768px) {
+    // change this to something like 700px to 
+    // see the transition from mobile to desktop, etc
+    @media (min-width: 1px) {
         @content;
     }    
 }

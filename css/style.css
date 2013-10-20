@@ -33,7 +33,7 @@ p {
     background: #ccc;
     display: block;
     margin-right: 5px; }
-  @media (max-width: 768px) {
+  @media (min-width: 1px) {
     .main-menu {
       position: fixed;
       left: 0;
@@ -49,7 +49,7 @@ p {
 
 .mobile-only {
   display: none; }
-  @media (max-width: 768px) {
+  @media (min-width: 1px) {
     .mobile-only {
       display: block; } }
 
