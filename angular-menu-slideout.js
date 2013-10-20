@@ -5,16 +5,9 @@ angular.module('MenuSlideout', ['ngTouch'])
         link: function (scope, $elem, attrs) {
             var startCoords, dir, endCoords, lastCoords,
 
-                // how far horizontally do I need to move
-                // before we do anything?
-                tolerance = 10,
-
-                // just keeping trying of if we met the tolerance
-                toleranceMet = false,
-
                 // if we slide this far in a particular
                 // direction, we ignore the direction
-                slideTorelance = 100,
+                slideTolerance = 100,
 
                 // we toggle transitionClass cuz we don't want to 
                 // transition while we're actually dragging
@@ -39,19 +32,17 @@ angular.module('MenuSlideout', ['ngTouch'])
 
             $swipe.bind($elem, {
                 start: function (coords, event) {
-                    toleranceMet = false;
                     startCoords = angular.copy(lastCoords = coords);
                 },
                 end: function (coords, event) {
                     endCoords = coords;
 
                     $elem.removeAttr('style').addClass(transitionClass);
-                    if(!toleranceMet) return;
 
-                    // if we slide more than slideTorelance pixels
+                    // if we slide more than slideTolerance pixels
                     // in a particular direction, then we override dir
-                    if(coords.x - startCoords.x > slideTorelance) dir = 'right';
-                    if(coords.x - startCoords.x < (-1 * slideTorelance)) dir = 'left';
+                    if(coords.x - startCoords.x > slideTolerance) dir = 'right';
+                    if(coords.x - startCoords.x < (-1 * slideTolerance)) dir = 'left';
 
                     if(dir == 'right') $elem.addClass(openClass);
                     else $elem.removeClass(openClass);
@@ -59,9 +50,6 @@ angular.module('MenuSlideout', ['ngTouch'])
                     $rootScope.$broadcast('slideMenuToggled', dir == 'right');
                 },
                 move: function (coords, event) {
-                    // set a tolerance before we kick in sliding
-                    // (Angular does this to an extent, also, I believe)
-                    if(!toleranceMet && Math.abs(startCoords.x - coords.x) < tolerance) return;
                     dir = lastCoords.x < coords.x ? 'right' : 'left';
                     $elem.removeClass(transitionClass);
 
@@ -77,7 +65,6 @@ angular.module('MenuSlideout', ['ngTouch'])
                     $elem.css(props);
 
                     lastCoords = coords;
-                    toleranceMet = true;
                 },
                 cancel: function (coords, event) {
                     $elem.addClass(transitionClass);
